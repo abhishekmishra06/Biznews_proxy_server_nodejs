@@ -8,8 +8,8 @@
     ],
     "routes": [
       {
-        "src": "/api/(.*)", 
+        "src": "/(.*)",
         "dest": "proxyServer.js"
       }
     ]
-  }
+}
