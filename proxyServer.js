@@ -76,7 +76,7 @@ require('dotenv').config(); // Make sure dotenv is loaded to get the environment
 const cors = require('cors'); // Import CORS middleware
 
 const app = express();
-app.use(cors({ origin: 'http://localhost:3000' }));
+app.use(cors({ origin: 'https://biznews-woad.vercel.app' }));
 
 const port = process.env.PORT || 4000; // Set a default port if not specified
 
