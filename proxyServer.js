@@ -68,14 +68,16 @@
 
 
 
-
-
+ 
 
 const express = require('express');
 const axios = require('axios');
 require('dotenv').config(); // Make sure dotenv is loaded to get the environment variables
+const cors = require('cors'); // Import CORS middleware
 
 const app = express();
+app.use(cors({ origin: 'http://localhost:3000' }));
+
 const port = process.env.PORT || 4000; // Set a default port if not specified
 
 // News API key from environment variable
@@ -83,7 +85,7 @@ const NEWS_API_KEY = process.env.NEWS_API_KEY;
 
 if (!NEWS_API_KEY) {
   console.error('NEWS_API_KEY is not defined!');
-}
+} 
 
 // Proxy News API requests
 app.get('/v2/:path*', async (req, res) => {
@@ -113,6 +115,8 @@ app.get('/v2/:path*', async (req, res) => {
 
     // Send back the response from News API
     res.status(response.status).json(response.data);
+    console.log(`sdsdsdsdsd  ${response.data}`);
+
   } catch (error) {
     console.error('Error:', error.message);
     res.status(500).json({ error: 'Failed to fetch data from News API' });
